@@ -12,7 +12,13 @@ pipeline {
 
     stage('Mail notification') {
       steps {
-        mail(subject: 'Dela3', body: 'Dela3', to: 'gk_attala@esi.dz')
+        mail(subject: 'mail notification', body: 'mail notif', to: 'gk_attala@esi.dz')
+      }
+    }
+
+    stage('Code Analysis') {
+      steps {
+        waitForQualityGate true
       }
     }
 
