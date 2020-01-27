@@ -42,5 +42,11 @@ pipeline {
       }
     }
 
+    stage('Slack notification') {
+      steps {
+        slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'TRQC12GGL/BT7843G5C/OROqdzn83cUuhBvoBTLlchHc', channel: 'tp', teamDomain: 'tp-outil', message: 'Salam ailkom')
+      }
+    }
+
   }
 }
