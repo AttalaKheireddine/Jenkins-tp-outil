@@ -18,10 +18,8 @@ pipeline {
 
     stage('Code Analysis') {
       steps {
-        withSonarQubeEnv('sonar') {
-          waitForQualityGate true
-        }
-
+        withSonarQubeEnv 'sonar'
+        waitForQualityGate true
       }
     }
 
