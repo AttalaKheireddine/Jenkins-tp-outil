@@ -38,12 +38,22 @@ pipeline {
     }
 
     stage('Deployment') {
+      when {
+        expression {
+          env.CHANGE_ID != null
+        }
+      }
       steps {
         bat 'gradle publish'
       }
     }
 
     stage('Slack notification') {
+      when {
+        expression {
+          env.CHANGE_ID != null
+        }
+      }
       steps {
         slackSend(baseUrl: 'https://hooks.slack.com/services/', token: 'TRQC12GGL/BT7843G5C/OROqdzn83cUuhBvoBTLlchHc', channel: 'tp', teamDomain: 'tp-outil', message: 'Salam ailkom')
       }
